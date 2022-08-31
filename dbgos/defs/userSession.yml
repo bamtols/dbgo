@@ -1,0 +1,40 @@
+Version: "1.0"
+Columns:
+  SessionId:
+    GoType: string
+    DbType: char(36)
+    Tags:
+      - primaryKey
+    Comment: 등록번호
+  UserId:
+    GoType: uint
+    Comment: 고객등록번호
+
+Indexes:
+  UserId:
+    - UserId
+Hooks:
+  TimeAt:
+    - createdAt
+    - deletedAt
+
+Binds:
+  User:
+    Model: User
+    BindType: belongsTo
+    ForeignKey: UserId
+    ReferKey: Id
+
+Migrations:
+  - Job: Add
+    Column: ExpiredAt
+    GoType: Time
+    Comment: 세션종료기간
+
+  - Job: Alter
+    Column: SessionId
+    GoType: string
+    DbType: char(50)
+
+  - Job: Drop
+    Column: UserId
