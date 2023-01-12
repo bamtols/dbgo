@@ -1,0 +1,29 @@
+version: v0.0.1
+activate: true
+columns:
+  id:
+    goType: int
+    tags:
+      - primaryKey
+    comment: 등록번호
+  userId:
+    goType: int
+    comment: 유저 등록 번호
+  nm:
+    goType: string
+    dbType: varchar(200)
+    comment: 계좌이름
+binds:
+  user:
+    model: users
+    local: userId
+    foreign: id
+    type: object
+indexes:
+  password:
+    - password
+hooks:
+  timeAt:
+    - createdAt
+    - updatedAt
+    - deletedAt

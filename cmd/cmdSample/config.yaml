@@ -1,0 +1,7 @@
+version: v0.0.1
+path:
+  model: !env modelPath
+  gen: !env genPath
+database: mysql
+goType:
+  Decimal: github.com/shopspring/decimal
